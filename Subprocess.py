@@ -4,7 +4,7 @@ from subprocess import check_output
 import time
 import multiprocessing as mp
 from queue import Queue
-import testing as test
+import test_files as test
 
 
 def convert_video_720(video_input,video_output):

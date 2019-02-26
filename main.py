@@ -1,7 +1,7 @@
 import os
 from Subprocess import convert_video_720
 from Subprocess import convert_video_480
-import testing as test
+import test_files as test
 import threading
 import queue
 import time
