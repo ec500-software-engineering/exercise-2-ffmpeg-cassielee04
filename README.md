@@ -7,6 +7,10 @@ For this exercise, I use FFMPEG library to convert the video in python. Each com
 # Architecture
 ![Alt text](/architecture.pdf?raw=true "architecture")
 # Installation Needed
+```python
+	# $ brew install ffmpeg
+ # pip install -U pytest
+```
 
 # How to run the program
 
