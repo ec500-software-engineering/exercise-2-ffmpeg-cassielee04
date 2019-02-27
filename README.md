@@ -8,12 +8,14 @@ For this exercise, I use FFMPEG library to convert the video in python. Each com
 ![Alt text](/architecture.pdf?raw=true "architecture")
 # Installation Needed
 ```python
-	# $ brew install ffmpeg
- # pip install -U pytest
+  brew install ffmpeg
+  pip install -U pytest
 ```
 
 # How to run the program
-
+```python
+  python3 main.py
+```
 # Process
 
 
