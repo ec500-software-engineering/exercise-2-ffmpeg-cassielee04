@@ -6,6 +6,8 @@ For this exercise, I use FFMPEG library to convert the video in python. Each com
  
 # Architecture
 ![Alt text](/diagram.png?raw=true "architecture")
+
+As the diagram shows, the main.py calls Subrocess.py to convert the video using threading. First the program check if the queue is empty or not. If empty, the queue stores the test video. Then the main.py calls "convert_video_720" and "convert_video_480" by threading. The programs runs asynchronously and gives the result videos parallel. In Subprocess.py, "test_files.py" is added. Here the test file tests if the converting achieved successfully. By using subprocess from ffmpeg, the test_files compares if original video's duration is the same as result video's duration. 
 # Installation Needed
 ```python
   brew install ffmpeg
@@ -16,7 +18,3 @@ For this exercise, I use FFMPEG library to convert the video in python. Each com
 ```python
   python3 main.py
 ```
-# Process
-
-
-# Unit Test
