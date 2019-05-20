@@ -22,8 +22,8 @@ def test_duration():
 	#convert_720 = './output_videos/full_ball_720p.mp4'
 
 	outLen = subprocess.call(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1',orig_vid])
-    inLen  = subprocess.call(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1',convert_480])
-    assert inLen == approx(outLen)
+	inLen  = subprocess.call(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1',convert_480])
+	assert inLen == approx(outLen)
 
 
 	# orig_probe = json.loads(subprocess.check_output(['/usr/local/opt/ffmpeg/bin/' + 'ffprobe', '-v', 'warning',
