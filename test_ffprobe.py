@@ -22,12 +22,12 @@ def test_duration():
 	#convert_720 = './output_videos/full_ball_720p.mp4'
 
 
-	orig_probe = json.loads(subprocess.check_output(['/usr/local/opt/ffmpeg/bin' + 'ffprobe', '-v', 'warning',
+	orig_probe = json.loads(subprocess.check_output(['/usr/local/opt/ffmpeg/bin/' + 'ffprobe', '-v', 'warning',
                                     '-print_format', 'json',
                                     '-show_streams',
                                     '-show_format',
                                     orig_vid]))
-	probe_480 = json.loads(subprocess.check_output(['/usr/local/opt/ffmpeg/bin' + 'ffprobe', '-v', 'warning',
+	probe_480 = json.loads(subprocess.check_output(['/usr/local/opt/ffmpeg/bin/' + 'ffprobe', '-v', 'warning',
                                     '-print_format', 'json',
                                     '-show_streams',
                                     '-show_format',
