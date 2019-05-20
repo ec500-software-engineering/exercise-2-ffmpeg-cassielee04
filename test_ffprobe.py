@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def ffprobe(file:Path)->dict:
-	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
+	input_info = subprocess.check_output(['ffprobe -i', '-v', 'warning',
                                     '-print_format', 'json',
                                     '-show_streams',
                                     '-show_format',
