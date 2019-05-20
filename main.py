@@ -2,7 +2,6 @@
 import threading
 import subprocess
 import os
-#import json
 import queue
 # from pytest import approx
 
@@ -112,29 +111,6 @@ def Threading(Vid_Q):
 
 	#print(str(counter) + "files are converting in total")
 
-
-
-
-# def ffprobe(inputfile):
-# 	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
-#                                     '-print_format', 'json',
-#                                     '-show_streams',
-#                                     '-show_format',
-#                                     inputfile],text=True)
-# 	input_data = json.loads(input_info)
-
-	# output_info = subprocess.check_output(['ffprobe', '-v', 'warning',
- #                                    '-print_format', 'json',
- #                                    '-show_streams',
- #                                    '-show_format',
- #                                    outputfile],text=True)
-	# output_data = json.loads(output_info)
-
-	# ori_duration = float(input_data['streams'][0]['duration'])
-	# out_duration = float(output_data['streams'][0]['duration'])
-
-	# assert ori_duration == approx(out_duration)
-	#return input_data
 
 
 def main():
