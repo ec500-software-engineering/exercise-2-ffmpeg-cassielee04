@@ -1,9 +1,10 @@
 from pytest import approx
 import json
 import subprocess
+from pathlib import Path
 
 
-def ffprobe(inputfile):
+def ffprobe(inputfile:Path)->dict:
 	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
                                     '-print_format', 'json',
                                     '-show_streams',
