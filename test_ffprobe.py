@@ -1,5 +1,15 @@
 from pytest import approx
-import main
+import json
+
+
+def ffprobe(inputfile):
+	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
+                                    '-print_format', 'json',
+                                    '-show_streams',
+                                    '-show_format',
+                                    inputfile],text=True)
+	input_data = json.loads(input_info)
+
 
 def test_ffprobe():
 
@@ -9,9 +19,9 @@ def test_ffprobe():
 	convert_720 = './output_videos/full_ball_720p.mp4'
 
 
-	orig_probe = main.ffprobe(orig_vid)
-	probe_480 = main.ffprobe(convert_480)
-	probe_720 = main.ffprobe(convert_720)
+	orig_probe = ffprobe(orig_vid)
+	probe_480 = ffprobe(convert_480)
+	probe_720 = ffprobe(convert_720)
 
 	ori_duration = float(orig_probe['streams'][0]['duration'])
 	duration_480 = float(probe_480['streams'][0]['duration'])

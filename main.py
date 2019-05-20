@@ -2,7 +2,7 @@
 import threading
 import subprocess
 import os
-import json
+#import json
 import queue
 # from pytest import approx
 
@@ -115,13 +115,13 @@ def Threading(Vid_Q):
 
 
 
-def ffprobe(inputfile):
-	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
-                                    '-print_format', 'json',
-                                    '-show_streams',
-                                    '-show_format',
-                                    inputfile],text=True)
-	input_data = json.loads(input_info)
+# def ffprobe(inputfile):
+# 	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
+#                                     '-print_format', 'json',
+#                                     '-show_streams',
+#                                     '-show_format',
+#                                     inputfile],text=True)
+# 	input_data = json.loads(input_info)
 
 	# output_info = subprocess.check_output(['ffprobe', '-v', 'warning',
  #                                    '-print_format', 'json',
