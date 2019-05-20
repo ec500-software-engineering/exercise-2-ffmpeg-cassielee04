@@ -9,7 +9,7 @@ def ffprobe(inputfile:Path)->dict:
                                     '-print_format', 'json',
                                     '-show_streams',
                                     '-show_format',
-                                    inputfile],text=True)
+                                    inputfile],,universal_newlines=True)
 	input_data = json.loads(input_info)
 	return input_data
 
