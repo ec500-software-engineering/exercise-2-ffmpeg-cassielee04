@@ -39,18 +39,17 @@ def fetch_files(inputpath):
 def convert_video_720(inputpath):
 	 # ffmpeg -i input.wmv -s hd720 -c:v libx264 -crf 23 -c:a aac -strict -2 output.mp4
 
-		if not os.path.exists('./output_videos/'):  # create output folder
-			os.mkdir('./output_videos/')
-		else:
-		    outputpath = "./output_videos/"+inputpath[:-4]+"_720p.mp4"
-		    cmds = ['ffmpeg', '-i', './videos/'+ inputpath , '-r','30','-s','hd720',outputpath]
-		    conversion1 = subprocess.Popen(cmds)
-		    #init_counter = init_counter+1
-		    #counter_720 = counter_720+1
+		# if not os.path.exists('./output_videos/'):  # create output folder
+		# 	os.mkdir('./output_videos/')
+	    outputpath = "./output_videos/"+inputpath[:-4]+"_720p.mp4"
+	    cmds = ['ffmpeg', '-i', './videos/'+ inputpath , '-r','30','-s','hd720',outputpath]
+	    conversion1 = subprocess.Popen(cmds)
+	    #init_counter = init_counter+1
+	    #counter_720 = counter_720+1
 
-		    conversion1.wait()
+	    conversion1.wait()
 
-		    print("conversion for " + inputpath +" _720 is complete" )
+	    print("conversion for " + inputpath +" _720 is complete" )
 		    #done_counter = done_counter+1
 
 		#if(init_counter != done_counter):
@@ -62,19 +61,18 @@ def convert_video_720(inputpath):
 
 def convert_video_480(inputpath):
 
-		if not os.path.exists('./output_videos/'):  # create output folder
-			os.mkdir('./output_videos/')
+		# if not os.path.exists('./output_videos/'):  # create output folder
+		# 	os.mkdir('./output_videos/')
+    
+		
+		outputpath = "./output_videos/"+inputpath[:-4]+"_480p.mp4"
+		cmds = ['ffmpeg', '-i','./videos/'+ inputpath, '-r','30','-s','hd480',outputpath]
+		conversion2 = subprocess.Popen(cmds)
+		#init_counter = init_counter+1
+		#counter_480 = counter_480+1
 
-		else:    
-			
-			outputpath = "./output_videos/"+inputpath[:-4]+"_480p.mp4"
-			cmds = ['ffmpeg', '-i','./videos/'+ inputpath, '-r','30','-s','hd480',outputpath]
-			conversion2 = subprocess.Popen(cmds)
-			#init_counter = init_counter+1
-			#counter_480 = counter_480+1
-
-			conversion2.wait()
-			print("conversion for " + inputpath +" _480 is complete" )
+		conversion2.wait()
+		print("conversion for " + inputpath +" _480 is complete" )
 			#done_counter = done_counter+1
 
 		#if(init_counter != done_counter):
@@ -89,8 +87,11 @@ def Threading(Vid_Q):
 	if(Vid_Q.empty()): #no videos
 		print("No Files to Convert")
 		pass
-	else:
 
+	else:
+		if not os.path.exists('./output_videos/'):  # create output folder
+			os.mkdir('./output_videos/')
+		total_files = Vid_Q.qsize()
 		#while the queue has video files run convert until nofiles left
 		print("Converted " + str(total_files) + " videos!" )
 		while (not Vid_Q.empty()):
