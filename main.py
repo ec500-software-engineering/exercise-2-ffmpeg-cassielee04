@@ -1,14 +1,10 @@
-import os
-#from Subprocess import *
-# from Subprocess import convert_video_480
+
 import threading
-import time
 import subprocess
 import os
-import json
-import multiprocessing as mp
+# import json
 import queue
-from pytest import approx
+# from pytest import approx
 
 
 
@@ -52,7 +48,7 @@ def convert_video_720(inputpath):
 		    #init_counter = init_counter+1
 		    #counter_720 = counter_720+1
 
-		    wait1 = conversion1.wait()
+		    conversion1.wait()
 		    #done_counter = done_counter+1
 
 		#if(init_counter != done_counter):
@@ -74,7 +70,7 @@ def convert_video_480(inputpath):
 			#init_counter = init_counter+1
 			#counter_480 = counter_480+1
 
-			wait2 = conversion2.wait()
+			conversion2.wait()
 			#done_counter = done_counter+1
 
 		#if(init_counter != done_counter):
@@ -103,7 +99,7 @@ def Threading(Vid_Q):
 			convert_720 = threading.Thread(target=convert_video_720, args=(video,)) # convert to 720
 			convert_720.start()
 
-			counvert_480.join()
+			convert_480.join()
 			convert_720.join()
 
 
@@ -139,14 +135,14 @@ def main():
 	input_q = fetch_files(inputPath)
 
 
+	
 
-
-	init_counter = 0
-	done_counter = 0
-	counter_480=0
-	counter_720 =0
-	outputPath_480 =''
-	outputPath_720 = ''
+	# init_counter = 0
+	# done_counter = 0
+	# counter_480=0
+	# counter_720 =0
+	# outputPath_480 =''
+	# outputPath_720 = ''
 
 	#START Threading
 	conversion = threading.Thread(target=Threading, args =(input_q,))
