@@ -49,6 +49,8 @@ def convert_video_720(inputpath):
 		    #counter_720 = counter_720+1
 
 		    conversion1.wait()
+
+		    print("conversion for " + inputpath +" _720 is complete" )
 		    #done_counter = done_counter+1
 
 		#if(init_counter != done_counter):
@@ -64,6 +66,7 @@ def convert_video_480(inputpath):
 			os.mkdir('./output_videos/')
 
 		else:    
+			
 			outputpath = "./output_videos/"+inputpath[:-4]+"_480p.mp4"
 			cmds = ['ffmpeg', '-i','./videos/'+ inputpath, '-r','30','-s','hd480',outputpath]
 			conversion2 = subprocess.Popen(cmds)
@@ -71,6 +74,7 @@ def convert_video_480(inputpath):
 			#counter_480 = counter_480+1
 
 			conversion2.wait()
+			print("conversion for " + inputpath +" _480 is complete" )
 			#done_counter = done_counter+1
 
 		#if(init_counter != done_counter):
@@ -88,6 +92,7 @@ def Threading(Vid_Q):
 	else:
 
 		#while the queue has video files run convert until nofiles left
+		print("Converted " + str(total_files) + " videos!" )
 		while (not Vid_Q.empty()):
 
 			video = Vid_Q.get()
@@ -102,31 +107,33 @@ def Threading(Vid_Q):
 			convert_480.join()
 			convert_720.join()
 
+		print("Converted " + str(total_files) + " videos!" )
 
 	#print(str(counter) + "files are converting in total")
 
 
 
 
-# def ffprobe(inputfile,outputfile):
-# 	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
-#                                     '-print_format', 'json',
-#                                     '-show_streams',
-#                                     '-show_format',
-#                                     inputfile],text=True)
-# 	input_data = json.loads(input_info)
+def ffprobe(inputfile):
+	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
+                                    '-print_format', 'json',
+                                    '-show_streams',
+                                    '-show_format',
+                                    inputfile],text=True)
+	input_data = json.loads(input_info)
 
-# 	output_info = subprocess.check_output(['ffprobe', '-v', 'warning',
-#                                     '-print_format', 'json',
-#                                     '-show_streams',
-#                                     '-show_format',
-#                                     outputfile],text=True)
-# 	output_data = json.loads(output_info)
+	# output_info = subprocess.check_output(['ffprobe', '-v', 'warning',
+ #                                    '-print_format', 'json',
+ #                                    '-show_streams',
+ #                                    '-show_format',
+ #                                    outputfile],text=True)
+	# output_data = json.loads(output_info)
 
-# 	ori_duration = float(input_data['streams'][0]['duration'])
-# 	out_duration = float(output_data['streams'][0]['duration'])
+	# ori_duration = float(input_data['streams'][0]['duration'])
+	# out_duration = float(output_data['streams'][0]['duration'])
 
-# 	assert ori_duration == approx(out_duration)
+	# assert ori_duration == approx(out_duration)
+	return input_data
 
 
 def main():
