@@ -9,6 +9,7 @@ def ffprobe(inputfile):
                                     '-show_format',
                                     inputfile],text=True)
 	input_data = json.loads(input_info)
+	return input_data
 
 
 def test_ffprobe():

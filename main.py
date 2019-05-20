@@ -134,7 +134,7 @@ def Threading(Vid_Q):
 	# out_duration = float(output_data['streams'][0]['duration'])
 
 	# assert ori_duration == approx(out_duration)
-	return input_data
+	#return input_data
 
 
 def main():
