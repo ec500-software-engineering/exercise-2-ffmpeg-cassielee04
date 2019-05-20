@@ -4,17 +4,17 @@ import subprocess
 from pathlib import Path
 
 
-def ffprobe(inputfile:Path)->dict:
+def ffprobe(file:Path)->dict:
 	input_info = subprocess.check_output(['ffprobe', '-v', 'warning',
                                     '-print_format', 'json',
                                     '-show_streams',
                                     '-show_format',
-                                    str(inputfile)],universal_newlines=True)
+                                    file],universal_newlines=True)
 	input_data = json.loads(input_info)
 	return input_data
 
 
-def test_ffprobe():
+def test_duration():
 
 
 	orig_vid = 'full_ball.mp4'
@@ -35,4 +35,4 @@ def test_ffprobe():
 
 
 	if __name__ == '__main__':
-		test_ffprobe()
+		test_duration()
