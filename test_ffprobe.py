@@ -1,5 +1,6 @@
 from pytest import approx
 import json
+import subprocess
 
 
 def ffprobe(inputfile):
